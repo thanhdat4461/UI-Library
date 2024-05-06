@@ -4,7 +4,6 @@
     end
     local ScreenGui = Instance.new("ScreenGui", game.CoreGui)
     ScreenGui.Name = "Library"
-    ScreenGui.Draggable = true
     local roundDecimals = function(num, places)
         places = math.pow(10, places or 0)
         num = num * places
@@ -223,8 +222,8 @@
 
             Button.Name = "Button"
             Button.Parent = holder
-            Button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-            Button.BackgroundTransparency = 1.000
+            Button.BackgroundColor3 = Color3.fromRGB(65, 65, 65)
+            Button.BackgroundTransparency = 0
             Button.Size = UDim2.new(1, 0, 0, 25)
 
             Text.Name = "Text"
@@ -257,8 +256,8 @@
 
             Button.Name = "Button"
             Button.Parent = holder
-            Button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-            Button.BackgroundTransparency = 1.000
+            Button.BackgroundColor3 = Color3.fromRGB(65, 65, 65)
+            Button.BackgroundTransparency = 0
             Button.Size = UDim2.new(1, 0, 0, 25)
             
             Text.Name = "Text"
