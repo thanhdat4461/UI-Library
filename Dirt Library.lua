@@ -1,9 +1,9 @@
-    local Library = {}
-    if game.CoreGui:FindFirstChild("Library") then
-        game.CoreGui:FindFirstChild("Library"):Destroy()
+    local Lib = {}
+    if game.CoreGui:FindFirstChild("Lib") then
+        game.CoreGui:FindFirstChild("Lib"):Destroy()
     end
     local ScreenGui = Instance.new("ScreenGui", game.CoreGui)
-    ScreenGui.Name = "Library"
+    ScreenGui.Name = "Lib"
     local roundDecimals = function(num, places)
         places = math.pow(10, places or 0)
         num = num * places
@@ -40,7 +40,7 @@
     		visible = not visible
     	end
     end)
-    function Library:CreateWindow(Name)
+    function Lib:CreateWindow(Name)
         local Window = {}
 
         local Main = Instance.new("ImageLabel")
