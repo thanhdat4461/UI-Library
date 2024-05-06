@@ -4,7 +4,6 @@
     end
     local ScreenGui = Instance.new("ScreenGui", game.CoreGui)
     ScreenGui.Name = "Library"
-    ScreenGui.Active = true
     ScreenGui.Draggable = true
     local roundDecimals = function(num, places)
         places = math.pow(10, places or 0)
