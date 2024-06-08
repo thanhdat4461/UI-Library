@@ -65,7 +65,7 @@ local defaults; do
                     Size = UDim2.new(1, -10, 1, 0);
                     Position = UDim2.new(0, 5, 0, 0);
                     BackgroundTransparency = 1;
-                    Font = Enum.Font.Code;
+                    Font = Enum.Font.FredokaOne;
                     TextSize = options.titlesize;
                     Font = options.titlefont;
                     TextColor3 = options.titletextcolor;
