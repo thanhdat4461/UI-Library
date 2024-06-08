@@ -56,7 +56,7 @@ local defaults; do
                 Size = UDim2.new(0, 190, 0, 30);
                 BackgroundColor3 = options.topcolor;
                 BorderSizePixel = 0;
-				Draggable = true;
+		Draggable = true;
                 Parent = library.container;
                 Position = UDim2.new(0, (15 + (200 * library.count) - 200), 0, 0);
                 ZIndex = 3;
