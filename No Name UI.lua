@@ -174,7 +174,7 @@ local function createOptionHolder(holderTitle, parent, parentTable, subHolder)
     end
     
     closeHolder.MouseButton1Click:Connect(function()
-    parentTable.open = not parentTable.open
+        parentTable.open = not parentTable.open
         tweenService:Create(close, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Rotation = parentTable.open and 90 or 180, ImageColor3 = parentTable.open and Color3.fromRGB(50, 50, 50) or Color3.fromRGB(30, 30, 30)}):Play()
         if subHolder then
             tweenService:Create(title, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = parentTable.open and Color3.fromRGB(16, 16, 16) or Color3.fromRGB(10, 10, 10)}):Play()
@@ -341,31 +341,14 @@ function createButton(option, parent)
         SliceScale = 0.02,
         Parent = main
     })
-    
-    local inContact
-    local clicking
-    main.MouseButton1Click:Connect(function()
-        library.flags[option.flag] = true
-        clicking = true
-        tweenService:Create(round, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(255, 65, 65)}):Play()
-        option.callback()
-        inContact = true
-        tweenService:Create(round, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(60, 60, 60)}):Play()
-    end)
-    
-    main.MouseButton1Click:Connect(function()
-        clicking = false
-        if inContact then
-            tweenService:Create(round, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(60, 60, 60)}):Play()
-        else
-            tweenService:Create(round, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(40, 40, 40)}):Play()
-        end
-        inContact = false
-        if not clicking then
-            tweenService:Create(round, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(40, 40, 40)}):Play()
-        end
-    end)
-end
+
+	main.MouseButton1Click:Connect(function()
+		library.flags[option.flag] = true
+		tweenService:Create(round, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(255, 65, 65)}):Play()
+		option.callback()
+        wait(1)
+	    tweenService:Create(round, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(60, 60, 60)}):Play()
+	end)
 
 local function createBind(option, parent)
     local binding
