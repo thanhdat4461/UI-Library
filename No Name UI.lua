@@ -317,7 +317,7 @@ function createToggle(option, parent)
 end
 
 function createButton(option, parent)
-    local main = library:Create("TextLabel", {
+    local main = library:Create("TextButton", {
         ZIndex = 2,
         LayoutOrder = option.position,
         Size = UDim2.new(1, 0, 0, 34),
@@ -344,7 +344,7 @@ function createButton(option, parent)
     
     local inContact
     local clicking
-    main.InputBegan:connect(function(input)
+    main.MouseButton1Click:Connect(function(input)
         if input.UserInputType == Enum.UserInputType.MouseButton1 then
             library.flags[option.flag] = true
             clicking = true
@@ -357,7 +357,7 @@ function createButton(option, parent)
         end
     end)
     
-    main.InputEnded:connect(function(input)
+    main.MouseButton1Click:Connect(function(input)
         if input.UserInputType == Enum.UserInputType.MouseButton1 then
             clicking = false
             if inContact then
