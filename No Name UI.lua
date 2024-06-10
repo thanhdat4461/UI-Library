@@ -268,10 +268,10 @@ function createToggle(option, parent)
     
     local inContact
     main.InputBegan:Connect(function(inputService)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        if inputService.UserInputType == Enum.UserInputType.MouseButton1 then
             option:SetState(not option.state)
         end
-        if input.UserInputType == Enum.UserInputType.MouseMovement then
+        if inputService.UserInputType == Enum.UserInputType.MouseMovement then
             inContact = true
             if not option.state then
                 tweenService:Create(tickboxOutline, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(140, 140, 140)}):Play()
@@ -280,7 +280,7 @@ function createToggle(option, parent)
     end)
     
     main.InputEnded:Connect(function(inputService)
-        if input.UserInputType == Enum.UserInputType.MouseMovement then
+        if inputService.UserInputType == Enum.UserInputType.MouseMovement then
             inContact = true
             if not option.state then
                 tweenService:Create(tickboxOutline, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(100, 100, 100)}):Play()
@@ -346,7 +346,7 @@ function createButton(option, parent)
         library.flags[option.flag] = true
 	tweenService:Create(round, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(255, 65, 65)}):Play()
 	option.callback()
-        wait(0.32)
+        wait(0.31)
 	tweenService:Create(round, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(60, 60, 60)}):Play()
     end)
 end
