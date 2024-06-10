@@ -267,7 +267,7 @@ function createToggle(option, parent)
     })
     
     local inContact
-    main.InputBegan:connect(function(input)
+    main.InputBegan:Connect(function(inputService)
         if input.UserInputType == Enum.UserInputType.MouseButton1 then
             option:SetState(not option.state)
         end
@@ -279,7 +279,7 @@ function createToggle(option, parent)
         end
     end)
     
-    main.InputEnded:connect(function(input)
+    main.InputEnded:Connect(function(inputService)
         if input.UserInputType == Enum.UserInputType.MouseMovement then
             inContact = true
             if not option.state then
