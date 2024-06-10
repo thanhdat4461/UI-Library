@@ -113,6 +113,7 @@ local function createOptionHolder(holderTitle, parent, parentTable, subHolder)
     local closeHolder = library:Create("TextButton", {
         Position = UDim2.new(1, 0, 0, 0),
         Size = UDim2.new(-1, 0, 1, 0),
+        Text = "",
         SizeConstraint = Enum.SizeConstraint.RelativeYY,
         BackgroundTransparency = 1,
         Parent = title
