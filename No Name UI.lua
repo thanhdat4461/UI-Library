@@ -172,7 +172,7 @@ local function createOptionHolder(holderTitle, parent, parentTable, subHolder)
         end)
     end
     
-    closeHolder.InputBegan:connect(function(input)
+    closeHolder.MouseButton1Click:Connect(function(input)
         if input.UserInputType == Enum.UserInputType.MouseButton1 then
             parentTable.open = not parentTable.open
             tweenService:Create(close, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Rotation = parentTable.open and 90 or 180, ImageColor3 = parentTable.open and Color3.fromRGB(50, 50, 50) or Color3.fromRGB(30, 30, 30)}):Play()
