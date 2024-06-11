@@ -198,6 +198,7 @@ local function createLabel(option, parent)
         BackgroundTransparency = 1,
         Text = " " .. option.text,
         TextSize = 17,
+	Draggable = false,
         Font = Enum.Font.Gotham,
         TextColor3 = Color3.fromRGB(255, 255, 255),
         TextXAlignment = Enum.TextXAlignment.Left,
@@ -218,6 +219,7 @@ function createToggle(option, parent)
         BackgroundTransparency = 1,
         Text = " " .. option.text,
         TextSize = 17,
+	Draggable = false,
         Font = Enum.Font.Gotham,
         TextColor3 = Color3.fromRGB(255, 255, 255),
         TextXAlignment = Enum.TextXAlignment.Left,
@@ -302,6 +304,7 @@ function createButton(option, parent)
         BackgroundTransparency = 1,
         Text = " " .. option.text,
         TextSize = 17,
+	Draggable = false,
         Font = Enum.Font.Gotham,
         TextColor3 = Color3.fromRGB(255, 255, 255),
         Parent = parent.content
@@ -341,6 +344,7 @@ local function createBind(option, parent)
         BackgroundTransparency = 1,
         Text = " " .. option.text,
         TextSize = 17,
+	Draggable = false,
         Font = Enum.Font.Gotham,
         TextColor3 = Color3.fromRGB(255, 255, 255),
         TextXAlignment = Enum.TextXAlignment.Left,
@@ -461,6 +465,7 @@ local function createSlider(option, parent)
         LayoutOrder = option.position,
         Size = UDim2.new(1, 0, 0, 50),
         BackgroundTransparency = 1,
+	Draggable = false,
         Parent = parent.content
     })
     
@@ -617,6 +622,7 @@ local function createList(option, parent, holder)
         LayoutOrder = option.position,
         Size = UDim2.new(1, 0, 0, 52),
         BackgroundTransparency = 1,
+	Draggable = false,
         Parent = parent.content
     })
     
@@ -744,9 +750,9 @@ local function createList(option, parent, holder)
         })
 
         button.MouseButton1Click:Connect(function()
-            tweenService:Create(button, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(10, 10, 10)}):Play()
+            tweenService:Create(button, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(30, 30, 30)}):Play()
             self:SetValue(value)
-	    wait()
+	    wait(0.2)
 	    option.open = false
             option.mainHolder.Visible = false
         end)
@@ -813,6 +819,7 @@ local function createBox(option, parent)
         LayoutOrder = option.position,
         Size = UDim2.new(1, 0, 0, 52),
         BackgroundTransparency = 1,
+	Draggable = false,
         Parent = parent.content
     })
     
@@ -1371,7 +1378,7 @@ local function createDivider(option, parent, holder)
     option.main = library:Create('Frame', {
         LayoutOrder = option.position,
         BackgroundTransparency = 1,
-
+        Draggable = false,
         Size = UDim2.new(1, 0, 0, 6),
         Parent = parent.content;
     })
