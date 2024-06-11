@@ -708,21 +708,20 @@ local function createList(option, parent, holder)
     end)
 
     round.MouseButton1Click:Connect(function()
-            if library.activePopup then
-                library.activePopup:Close()
-            end
-            local position = main.AbsolutePosition
-            option.mainHolder.Position = UDim2.new(0, position.X - 5, 0, position.Y - 10)
-            option.open = true
-            option.mainHolder.Visible = true
-            library.activePopup = option
-            content.ScrollBarThickness = 6
-            tweenService:Create(option.mainHolder, TweenInfo.new(0.3, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {ImageTransparency = 0, Position = UDim2.new(0, position.X - 5, 0, position.Y - 4)}):Play()
-            tweenService:Create(option.mainHolder, TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out, 0, false, 0.1), {Position = UDim2.new(0, position.X - 5, 0, position.Y + 1)}):Play()
-            for _,label in next, content:GetChildren() do
-                if label:IsA"TextLabel" then
-                    tweenService:Create(label, TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 0, TextTransparency = 0}):Play()
-                end
+        if library.activePopup then
+           library.activePopup:Close()
+        end
+        local position = main.AbsolutePosition
+        option.mainHolder.Position = UDim2.new(0, position.X - 5, 0, position.Y - 10)
+        option.open = true
+        option.mainHolder.Visible = true
+        library.activePopup = option
+        content.ScrollBarThickness = 6
+        tweenService:Create(option.mainHolder, TweenInfo.new(0.3, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {ImageTransparency = 0, Position = UDim2.new(0, position.X - 5, 0, position.Y - 4)}):Play()
+        tweenService:Create(option.mainHolder, TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out, 0, false, 0.1), {Position = UDim2.new(0, position.X - 5, 0, position.Y + 1)}):Play()
+        for _,label in next, content:GetChildren() do
+            if label:IsA"TextLabel" then
+                tweenService:Create(label, TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 0, TextTransparency = 0}):Play()
             end
         end
     end)
