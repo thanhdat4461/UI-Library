@@ -746,6 +746,9 @@ local function createList(option, parent, holder)
         button.MouseButton1Click:Connect(function()
             tweenService:Create(button, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(10, 10, 10)}):Play()
             self:SetValue(value)
+	    wait()
+	    option.open = false
+            option.mainHolder.Visible = false
         end)
 
         if not table.find(option.values, value) then
