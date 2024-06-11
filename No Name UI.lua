@@ -620,7 +620,7 @@ local function createList(option, parent, holder)
         Parent = parent.content
     })
     
-    local round = library:Create("ImageLabel", {
+    local round = library:Create("ImageButton", {
         Position = UDim2.new(0, 6, 0, 4),
         Size = UDim2.new(1, -12, 1, -10),
         BackgroundTransparency = 1,
@@ -706,10 +706,8 @@ local function createList(option, parent, holder)
         option.mainHolder.Size = UDim2.new(0, 240, 0, (valueCount > 4 and (4 * 40) or layout.AbsoluteContentSize.Y) + 12)
         content.CanvasSize = UDim2.new(0, 0, 0, layout.AbsoluteContentSize.Y + 12)
     end)
-    
-    local inContact
-    round.InputBegan:connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseButton1 then
+
+    round.MouseButton1Click:Connect(function()
             if library.activePopup then
                 library.activePopup:Close()
             end
@@ -725,21 +723,6 @@ local function createList(option, parent, holder)
                 if label:IsA"TextLabel" then
                     tweenService:Create(label, TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 0, TextTransparency = 0}):Play()
                 end
-            end
-        end
-        if input.UserInputType == Enum.UserInputType.MouseMovement then
-            inContact = true
-            if not option.open then
-                tweenService:Create(round, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(60, 60, 60)}):Play()
-            end
-        end
-    end)
-    
-    round.InputEnded:connect(function(input)
-        if input.UserInputType == Enum.UserInputType.MouseMovement then
-            inContact = false
-            if not option.open then
-                tweenService:Create(round, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(40, 40, 40)}):Play()
             end
         end
     end)
