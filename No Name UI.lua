@@ -212,7 +212,7 @@ local function createLabel(option, parent)
 end
 
 function createToggle(option, parent)
-    local main = library:Create("TextLabel", {
+    local main = library:Create("TextButton", {
         LayoutOrder = option.position,
         Size = UDim2.new(1, 0, 0, 31),
         BackgroundTransparency = 1,
@@ -266,26 +266,8 @@ function createToggle(option, parent)
         Parent = checkmarkHolder
     })
     
-    local inContact
-    main.InputBegan:Connect(function(Input)
-        if Input.UserInputType == Enum.UserInputType.MouseButton1 then
-            option:SetState(not option.state)
-        end
-        if Input.UserInputType == Enum.UserInputType.MouseMovement then
-            inContact = true
-            if not option.state then
-                tweenService:Create(tickboxOutline, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(140, 140, 140)}):Play()
-            end
-        end
-    end)
-    
-    main.InputEnded:Connect(function(Input)
-        if Input.UserInputType == Enum.UserInputType.MouseMovement then
-            inContact = true
-            if not option.state then
-                tweenService:Create(tickboxOutline, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(100, 100, 100)}):Play()
-            end
-        end
+    main.MouseButton1Click:Connect(function()
+        option:SetState(not option.state)
     end)
     
     function option:SetState(state)
@@ -296,11 +278,7 @@ function createToggle(option, parent)
         if state then
             tweenService:Create(tickboxOutline, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(255, 65, 65)}):Play()
         else
-            if inContact then
-                tweenService:Create(tickboxOutline, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(140, 140, 140)}):Play()
-            else
-                tweenService:Create(tickboxOutline, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(100, 100, 100)}):Play()
-            end
+            tweenService:Create(tickboxOutline, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(100, 100, 100)}):Play()
         end
         self.callback(state)
     end
