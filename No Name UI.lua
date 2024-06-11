@@ -719,9 +719,9 @@ local function createList(option, parent, holder)
         content.ScrollBarThickness = 6
         tweenService:Create(option.mainHolder, TweenInfo.new(0.3, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {ImageTransparency = 0, Position = UDim2.new(0, position.X - 5, 0, position.Y - 4)}):Play()
         tweenService:Create(option.mainHolder, TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out, 0, false, 0.1), {Position = UDim2.new(0, position.X - 5, 0, position.Y + 1)}):Play()
-        for _,label in next, content:GetChildren() do
-            if label:IsA"TextLabel" then
-                tweenService:Create(label, TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 0, TextTransparency = 0}):Play()
+        for _,button in next, content:GetChildren() do
+            if button:IsA"TextButton" then
+                tweenService:Create(button, TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 0, TextTransparency = 0}):Play()
             end
         end
     end)
@@ -729,7 +729,7 @@ local function createList(option, parent, holder)
     local TAB_CONST = string.rep(' ', 4)
     function option:AddValue(value)
         valueCount = valueCount + 1
-        local label = library:Create("TextLabel", {
+        local button = library:Create("TextButton", {
             ZIndex = 3,
             Size = UDim2.new(1, 0, 0, 40),
             BackgroundColor3 = Color3.fromRGB(30, 30, 30),
@@ -743,8 +743,8 @@ local function createList(option, parent, holder)
             Parent = content
         })
 
-        label.MouseButton1Click:Connect(function()
-            tweenService:Create(label, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(10, 10, 10)}):Play()
+        button.MouseButton1Click:Connect(function()
+            tweenService:Create(button, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(10, 10, 10)}):Play()
             self:SetValue(value)
         end)
 
@@ -762,9 +762,9 @@ local function createList(option, parent, holder)
     end
     
     function option:RemoveValue(value)
-        for _,label in next, content:GetChildren() do
-            if label:IsA"TextLabel" and label.Text == (TAB_CONST .. value) then
-                label:Destroy()
+        for _,button in next, content:GetChildren() do
+            if button:IsA"TextButton" and button.Text == (TAB_CONST .. value) then
+                button:Destroy()
                 valueCount = valueCount - 1
                 break
             end
@@ -789,9 +789,9 @@ local function createList(option, parent, holder)
         local position = main.AbsolutePosition
         tweenService:Create(round, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = inContact and Color3.fromRGB(60, 60, 60) or Color3.fromRGB(40, 40, 40)}):Play()
         tweenService:Create(self.mainHolder, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageTransparency = 1, Position = UDim2.new(0, position.X - 5, 0, position.Y -10)}):Play()
-        for _,label in next, content:GetChildren() do
-            if label:IsA"TextLabel" then
-                tweenService:Create(label, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 1, TextTransparency = 1}):Play()
+        for _,button in next, content:GetChildren() do
+            if button:IsA"TextButton" then
+                tweenService:Create(button, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 1, TextTransparency = 1}):Play()
             end
         end
         wait(0.3)
