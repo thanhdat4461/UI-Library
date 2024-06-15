@@ -484,6 +484,19 @@ local function createSlider(option, parent)
         Parent = slider
     })
     
+    local circle = library:Create("ImageLabel", {
+	AnchorPoint = Vector2.new(0.5, 0.5),
+	Position = UDim2.new((option.value - option.min) / (option.max - option.min), 0, 0.5, 0),
+	SizeConstraint = Enum.SizeConstraint.RelativeYY,
+	BackgroundTransparency = 0,
+	Image = "rbxassetid://3570695787",
+	ImageColor3 = Color3.fromRGB(255, 255, 255),
+	ScaleType = Enum.ScaleType.Slice,
+	SliceCenter = Rect.new(100, 100, 100, 100),
+	SliceScale = 1,
+	Parent = slider
+    })
+   
     local valueRound = library:Create("ImageLabel", {
         Position = UDim2.new(1, -6, 0, 4),
         Size = UDim2.new(0, -60, 0, 18),
@@ -514,13 +527,13 @@ local function createSlider(option, parent)
         fill.Size = UDim2.new(option.value / (option.max - option.min), 0, 1, 0)
     end
     
-    fill.InputBegan:Connect(function(input)
+    circle.InputBegan:Connect(function(input)
         if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
             dragging = true
         end
     end)
 
-    fill.InputEnded:Connect(function(input)
+    circle.InputEnded:Connect(function(input)
         if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
             dragging = false
         end
@@ -531,7 +544,7 @@ local function createSlider(option, parent)
             option:SetValue(option.min + ((input.Position.X - slider.AbsolutePosition.X) / slider.AbsoluteSize.X) * (option.max - option.min))
         end
     end)
-
+	
     inputvalue.FocusLost:Connect(function()
         option:SetValue(tonumber(inputvalue.Text) or option.value)
     end)
