@@ -487,6 +487,7 @@ local function createSlider(option, parent)
     local circle = library:Create("ImageLabel", {
 	AnchorPoint = Vector2.new(0.5, 0.5),
 	Position = UDim2.new((option.value - option.min) / (option.max - option.min), 0, 0.5, 0),
+        Size = UDim2.new(3.5, 0, 3.5, 0),
 	SizeConstraint = Enum.SizeConstraint.RelativeYY,
 	BackgroundTransparency = 0,
 	Image = "rbxassetid://3570695787",
