@@ -477,7 +477,7 @@ local function createSlider(option, parent)
     local fill = library:Create("ImageLabel", {
         BackgroundTransparency = 1,
         Image = "rbxassetid://3570695787",
-        ImageColor3 = Color3.fromRGB(60, 60, 60),
+        ImageColor3 = Color3.fromRGB(255, 65, 65),
         ScaleType = Enum.ScaleType.Slice,
         SliceCenter = Rect.new(100, 100, 100, 100),
         SliceScale = 0.02,
@@ -514,13 +514,13 @@ local function createSlider(option, parent)
         fill.Size = UDim2.new(option.value / (option.max - option.min), 0, 1, 0)
     end
     
-    main.InputBegan:Connect(function(input)
+    fill.InputBegan:Connect(function(input)
         if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
             dragging = true
         end
     end)
 
-    main.InputEnded:Connect(function(input)
+    fill.InputEnded:Connect(function(input)
         if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
             dragging = false
         end
