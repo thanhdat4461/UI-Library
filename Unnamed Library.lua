@@ -147,8 +147,28 @@ local function createOptionHolder(holderTitle, parent, parentTable, subHolder)
     if not subHolder then
         library:Create("UIPadding", {
             Parent = parentTable.content
-        })        
-    end
+        })       
+		title.InputBegan:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+				dragObject = parentTable.main
+				dragging = true
+				dragStart = input.Position
+				startPos = dragObject.Position
+			end
+		end)
+
+		inputService.InputChanged:Connect(function(input)
+			if dragging and input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+				dragInput = input
+			end
+		end)
+
+			title.InputEnded:Connect(function(input)
+			if input.UserInputType == Enum.UserInputType.MouseButton1 or or input.UserInputType == Enum.UserInputType.Touch then
+				dragging = false
+			end
+		end)
+	end
     
     closeHolder.MouseButton1Click:Connect(function()
         parentTable.open = not parentTable.open
