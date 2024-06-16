@@ -69,6 +69,7 @@ local function createOptionHolder(holderTitle, parent, parentTable, subHolder)
         Position = UDim2.new(0, 20 + (250 * (parentTable.position or 0)), 0, 20),
         Size = UDim2.new(0, 230, 0, size),
         BackgroundTransparency = 1,
+        Draggable = true,
         Image = "rbxassetid://3570695787",
         ImageColor3 = Color3.fromRGB(20, 20, 20),
         ScaleType = Enum.ScaleType.Slice,
@@ -98,8 +99,6 @@ local function createOptionHolder(holderTitle, parent, parentTable, subHolder)
         BackgroundColor3 = Color3.fromRGB(10, 10, 10),
         BorderSizePixel = 0,
         Text = holderTitle,
-	Active = true,
-	Draggable = true,
         TextSize = subHolder and 16 or 17,
         Font = Enum.Font.GothamBold,
         TextColor3 = Color3.fromRGB(255, 255, 255),
@@ -131,6 +130,7 @@ local function createOptionHolder(holderTitle, parent, parentTable, subHolder)
         Position = UDim2.new(0, 0, 0, size),
         Size = UDim2.new(1, 0, 1, -size),
         BackgroundTransparency = 1,
+        Draggable = false,
         Parent = parentTable.main
     })
     
@@ -173,8 +173,10 @@ local function createLabel(option, parent)
         LayoutOrder = option.position,
         Size = UDim2.new(1, 0, 0, 26),
         BackgroundTransparency = 1,
+        Name = "Label",
         Text = " " .. option.text,
         TextSize = 17,
+        Active = false,
     	Draggable = false,
         Font = Enum.Font.Gotham,
         TextColor3 = Color3.fromRGB(255, 255, 255),
@@ -193,8 +195,8 @@ function createToggle(option, parent)
     local main = library:Create("TextButton", {
         LayoutOrder = option.position,
         Size = UDim2.new(1, 0, 0, 31),
-        Name = "Toggle",
         BackgroundTransparency = 1,
+        Name = "Toggle",
         Text = " " .. option.text,
         TextSize = 17,
     	Draggable = false,
@@ -209,6 +211,7 @@ function createToggle(option, parent)
         Size = UDim2.new(-1, 10, 1, -10),
         SizeConstraint = Enum.SizeConstraint.RelativeYY,
         BackgroundTransparency = 1,
+        Name = "Tickbox Outline",
         Image = "rbxassetid://3570695787",
         ImageColor3 = option.state and Color3.fromRGB(255, 65, 65) or Color3.fromRGB(100, 100, 100),
         ScaleType = Enum.ScaleType.Slice,
@@ -221,6 +224,7 @@ function createToggle(option, parent)
         Position = UDim2.new(0, 2, 0, 2),
         Size = UDim2.new(1, -4, 1, -4),
         BackgroundTransparency = 1,
+        Name = "Tickbox Inner",
         Image = "rbxassetid://3570695787",
         ImageColor3 = option.state and Color3.fromRGB(255, 65, 65) or Color3.fromRGB(20, 20, 20),
         ScaleType = Enum.ScaleType.Slice,
@@ -233,6 +237,7 @@ function createToggle(option, parent)
         Position = UDim2.new(0, 4, 0, 4),
         Size = option.state and UDim2.new(1, -8, 1, -8) or UDim2.new(0, 0, 1, -8),
         BackgroundTransparency = 1,
+        Name = "Checkmark Holder",
         ClipsDescendants = true,
         Parent = tickboxOutline
     })
@@ -241,6 +246,7 @@ function createToggle(option, parent)
         Size = UDim2.new(1, 0, 1, 0),
         SizeConstraint = Enum.SizeConstraint.RelativeYY,
         BackgroundTransparency = 1,
+        Name = "Checkmark",
         Image = "rbxassetid://4919148038",
         ImageColor3 = Color3.fromRGB(20, 20, 20),
         Parent = checkmarkHolder
@@ -283,7 +289,7 @@ function createButton(option, parent)
         BackgroundTransparency = 1,
         Text = " " .. option.text,
         TextSize = 17,
-	    Draggable = false,
+	Draggable = false,
         Font = Enum.Font.Gotham,
         TextColor3 = Color3.fromRGB(255, 255, 255),
         Parent = parent.content
@@ -294,6 +300,7 @@ function createButton(option, parent)
         Position = UDim2.new(0.5, 0, 0.5, 0),
         Size = UDim2.new(1, -12, 1, -10),
         BackgroundTransparency = 1,
+        Name = "Round",
         Image = "rbxassetid://3570695787",
         ImageColor3 = Color3.fromRGB(40, 40, 40),
         ScaleType = Enum.ScaleType.Slice,
@@ -336,6 +343,7 @@ local function createBind(option, parent)
         Size = UDim2.new(0, -textService:GetTextSize(text, 16, Enum.Font.Gotham, Vector2.new(9e9, 9e9)).X - 16, 1, -10),
         SizeConstraint = Enum.SizeConstraint.RelativeYY,
         BackgroundTransparency = 1,
+        Name = "Round",
         Image = "rbxassetid://3570695787",
         ImageColor3 = Color3.fromRGB(40, 40, 40),
         ScaleType = Enum.ScaleType.Slice,
@@ -347,6 +355,7 @@ local function createBind(option, parent)
     local bindinput = library:Create("TextLabel", {
         Size = UDim2.new(1, 0, 1, 0),
         BackgroundTransparency = 1,
+        Name = "Bind Input",
         Text = text,
         TextSize = 16,
         Font = Enum.Font.Gotham,
@@ -446,6 +455,7 @@ local function createSlider(option, parent)
         Size = UDim2.new(1, 0, 0, 50),
         Name = "Slider",
         BackgroundTransparency = 1,
+	Active = false,
     	Draggable = false,
         Parent = parent.content
     })
@@ -454,6 +464,7 @@ local function createSlider(option, parent)
         Position = UDim2.new(0, 0, 0, 4),
         Size = UDim2.new(1, 0, 0, 20),
         BackgroundTransparency = 1,
+        Name = "Title",
         Text = " " .. option.text,
         TextSize = 17,
         Font = Enum.Font.Gotham,
@@ -466,6 +477,7 @@ local function createSlider(option, parent)
         Position = UDim2.new(0, 10, 0, 34),
         Size = UDim2.new(1, -20, 0, 5),
         BackgroundTransparency = 1,
+        Name = "Slider",
         Image = "rbxassetid://3570695787",
         ImageColor3 = Color3.fromRGB(30, 30, 30),
         ScaleType = Enum.ScaleType.Slice,
@@ -476,6 +488,7 @@ local function createSlider(option, parent)
     
     local fill = library:Create("ImageLabel", {
         BackgroundTransparency = 1,
+        Name = "Fill",
         Image = "rbxassetid://3570695787",
         ImageColor3 = Color3.fromRGB(60, 60, 60),
         ScaleType = Enum.ScaleType.Slice,
@@ -484,23 +497,25 @@ local function createSlider(option, parent)
         Parent = slider
     })
 
-	local circle = library:Create("ImageLabel", {
-		AnchorPoint = Vector2.new(0.5, 0.5),
-		Position = UDim2.new((option.value - option.min) / (option.max - option.min), 0, 0.5, 0),
-		SizeConstraint = Enum.SizeConstraint.RelativeYY,
-		BackgroundTransparency = 0,
-		Image = "rbxassetid://3570695787",
-		ImageColor3 = Color3.fromRGB(60, 60, 60),
-		ScaleType = Enum.ScaleType.Slice,
-		SliceCenter = Rect.new(100, 100, 100, 100),
-		SliceScale = 1,
-		Parent = slider
-	})
+    local circle = library:Create("ImageLabel", {
+	AnchorPoint = Vector2.new(0.5, 0.5),
+	Position = UDim2.new((option.value - option.min) / (option.max - option.min), 0, 0.5, 0),
+	SizeConstraint = Enum.SizeConstraint.RelativeYY,
+	BackgroundTransparency = 1,
+        Name = "Circle",
+	Image = "rbxassetid://3570695787",
+	ImageColor3 = Color3.fromRGB(60, 60, 60),
+	ScaleType = Enum.ScaleType.Slice,
+	SliceCenter = Rect.new(100, 100, 100, 100),
+	SliceScale = 1,
+	Parent = slider
+    })
    
     local valueRound = library:Create("ImageLabel", {
         Position = UDim2.new(1, -6, 0, 4),
         Size = UDim2.new(0, -60, 0, 18),
         BackgroundTransparency = 1,
+        Name = "Value Round",
         Image = "rbxassetid://3570695787",
         ImageColor3 = Color3.fromRGB(40, 40, 40),
         ScaleType = Enum.ScaleType.Slice,
@@ -512,6 +527,7 @@ local function createSlider(option, parent)
     local inputvalue = library:Create("TextBox", {
         Size = UDim2.new(1, 0, 1, 0),
         BackgroundTransparency = 1,
+        Name = "Input Value",
         Text = option.value,
         TextColor3 = Color3.fromRGB(235, 235, 235),
         TextSize = 15,
@@ -527,13 +543,13 @@ local function createSlider(option, parent)
         fill.Size = UDim2.new(option.value / (option.max - option.min), 0, 1, 0)
     end
     
-    circle.InputBegan:Connect(function(input)
+    main.InputBegan:Connect(function(input)
         if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
             dragging = true
         end
     end)
 
-    circle.InputEnded:Connect(function(input)
+    main.InputEnded:Connect(function(input)
         if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
             dragging = false
         end
@@ -583,6 +599,7 @@ local function createList(option, parent, holder)
         Position = UDim2.new(0, 6, 0, 4),
         Size = UDim2.new(1, -12, 1, -10),
         BackgroundTransparency = 1,
+        Name = "Round",
         Image = "rbxassetid://3570695787",
         ImageColor3 = Color3.fromRGB(40, 40, 40),
         ScaleType = Enum.ScaleType.Slice,
@@ -595,6 +612,7 @@ local function createList(option, parent, holder)
         Position = UDim2.new(0, 12, 0, 8),
         Size = UDim2.new(1, -24, 0, 14),
         BackgroundTransparency = 1,
+        Name = "Title",
         Text = option.text,
         TextSize = 14,
         Font = Enum.Font.GothamBold,
@@ -607,6 +625,7 @@ local function createList(option, parent, holder)
         Position = UDim2.new(0, 12, 0, 20),
         Size = UDim2.new(1, -24, 0, 24),
         BackgroundTransparency = 1,
+        Name = "List Value",
         Text = option.value,
         TextSize = 18,
         Font = Enum.Font.Gotham,
@@ -704,8 +723,8 @@ local function createList(option, parent, holder)
 
         button.MouseButton1Click:Connect(function()
             self:SetValue(value)
-	        wait(0.3)
-	        option.open = false
+	    wait(0.3)
+	    option.open = false
             option.mainHolder.Visible = false
         end)
 
@@ -756,11 +775,9 @@ local function createList(option, parent, holder)
             end
         end
         wait(0.3)
-        --delay(0.3, function()
-            if not self.open then
-                self.mainHolder.Visible = false
-            end
-        --end)
+        if not self.open then
+            self.mainHolder.Visible = false
+        end
     end
 
     return option
@@ -780,6 +797,7 @@ local function createBox(option, parent)
         Position = UDim2.new(0, 6, 0, 4),
         Size = UDim2.new(1, -12, 1, -10),
         BackgroundTransparency = 1,
+        Name = "Outline",
         Image = "rbxassetid://3570695787",
         ImageColor3 = Color3.fromRGB(60, 60, 60),
         ScaleType = Enum.ScaleType.Slice,
@@ -792,6 +810,7 @@ local function createBox(option, parent)
         Position = UDim2.new(0, 8, 0, 6),
         Size = UDim2.new(1, -16, 1, -14),
         BackgroundTransparency = 1,
+        Name = "Round",
         Image = "rbxassetid://3570695787",
         ImageColor3 = Color3.fromRGB(20, 20, 20),
         ScaleType = Enum.ScaleType.Slice,
@@ -804,6 +823,7 @@ local function createBox(option, parent)
         Position = UDim2.new(0, 12, 0, 8),
         Size = UDim2.new(1, -24, 0, 14),
         BackgroundTransparency = 1,
+        Name = "Title",
         Text = option.text,
         TextSize = 14,
         Font = Enum.Font.GothamBold,
@@ -816,6 +836,7 @@ local function createBox(option, parent)
         Position = UDim2.new(0, 12, 0, 20),
         Size = UDim2.new(1, -24, 0, 24),
         BackgroundTransparency = 1,
+        Name = "Input Value",
         Text = option.value,
         TextSize = 18,
         Font = Enum.Font.Gotham,
@@ -1233,6 +1254,7 @@ local function createColor(option, parent, holder)
         Size = UDim2.new(-1, 10, 1, -10),
         SizeConstraint = Enum.SizeConstraint.RelativeYY,
         BackgroundTransparency = 1,
+        Name = "Colorbox Outline",
         Image = "rbxassetid://3570695787",
         ImageColor3 = Color3.fromRGB(100, 100, 100),
         ScaleType = Enum.ScaleType.Slice,
@@ -1332,9 +1354,10 @@ local function createDivider(option, parent, holder)
     option.main = library:Create('Frame', {
         LayoutOrder = option.position,
         BackgroundTransparency = 1,
+        Name = "Divider",
+	Active = false,
         Draggable = false,
         Size = UDim2.new(1, 0, 0, 6),
-        Name = "Divider",
         Parent = parent.content;
     })
 
