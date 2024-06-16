@@ -98,6 +98,8 @@ local function createOptionHolder(holderTitle, parent, parentTable, subHolder)
         BackgroundColor3 = Color3.fromRGB(10, 10, 10),
         BorderSizePixel = 0,
         Text = holderTitle,
+	Active = true,
+	Draggable = true,
         TextSize = subHolder and 16 or 17,
         Font = Enum.Font.GothamBold,
         TextColor3 = Color3.fromRGB(255, 255, 255),
@@ -146,27 +148,6 @@ local function createOptionHolder(holderTitle, parent, parentTable, subHolder)
         library:Create("UIPadding", {
             Parent = parentTable.content
         })
-
-		title.InputBegan:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
-				dragObject = parentTable.main
-				dragging = true
-				dragStart = input.Position
-				startPos = dragObject.Position
-			end
-		end)
-
-		inputService.InputChanged:Connect(function(input)
-			if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
-				dragInput = input
-			end
-		end)
-
-			title.InputEnded:Connect(function(input)
-			if input.UserInputType == Enum.UserInputType.MouseButton1 or or input.UserInputType == Enum.UserInputType.Touch then
-				dragging = false
-			end
-		end)
     end
     
     closeHolder.MouseButton1Click:Connect(function()
