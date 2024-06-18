@@ -312,9 +312,9 @@ function createButton(option, parent)
     main.MouseButton1Click:Connect(function()
         library.flags[option.flag] = true
     	tweenService:Create(round, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(255, 65, 65)}):Play()
-    	option.callback()
         repeat task.wait() until round.ImageColor3 == Color3.fromRGB(255, 65, 65)
     	tweenService:Create(round, TweenInfo.new(0.1, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(40, 40, 40)}):Play()
+    	option.callback()
     end)
 end
 	
