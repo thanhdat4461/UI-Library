@@ -749,7 +749,7 @@ local function createList(option, parent, holder)
 
         button.MouseButton1Click:Connect(function()
             self:SetValue(value)
-            local position = main.AbsolutePosition
+            local position = main6.AbsolutePosition
             option.open = false
             content.ScrollBarThickness = 0
             tweenService:Create(option.mainHolder, TweenInfo.new(0.3, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {ImageTransparency = 1, Position = UDim2.new(0, position.X - 5, 0, position.Y - 10)}):Play()
