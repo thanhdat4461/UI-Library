@@ -1,6 +1,6 @@
 # Kavo UI Library
 
-# Getting Loadstring
+## Getting Loadstring
 ```lua
 local Library = loadstring(game:HttpGet(""))()
 ```
