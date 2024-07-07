@@ -13,31 +13,31 @@ local Window = Library.CreateLib("TITLE", "DarkTheme")
 
 ## Themes
 
-```
+```coffee
 DarkTheme
 ```
-```
+```coffee
 LightTheme
 ```
-```
+```coffee
 BloodTheme
 ```
-```
+```coffee
 GrapeTheme
 ```
-```
+```coffee
 Ocean
 ```
-```
+```coffee
 Midnight
 ```
-```
+```coffee
 Sentinel
 ```
-```
+```coffee
 Synapse
 ```
-```
+```coffee
 Serpent
 ```
 
