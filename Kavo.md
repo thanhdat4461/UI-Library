@@ -1,5 +1,6 @@
 # Kavo UI Library
 
+
 ## Getting Loadstring
 ```lua
 local Library = loadstring(game:HttpGet(""))()
@@ -37,26 +38,37 @@ Sentinel
 Synapse
 ```
 
+## Creating Tabs
+
 ```lua
 local Tab = Window:NewTab("TabName")
 ```
+
+## Creating Section
 
 ```lua
 local Section = Tab:NewSection("Section Name")
 ```
 
+## Update Section
+
 ```lua
 Section:UpdateSection("Section New Title")
 ```
 
+## Creating Labels
 
 ```lua
 Section:NewLabel("LabelText")
 ```
 
+## Update Label
+
 ```lua
 label:UpdateLabel("New Text")
 ```
+
+## Creating Buttons
 
 ```lua
 Section:NewButton("ButtonText", "ButtonInfo", function()
@@ -64,9 +76,15 @@ Section:NewButton("ButtonText", "ButtonInfo", function()
 end)
 ```
 
+## Update Button
+
+Make sure your button is local when updating it.
+
 ```lua
 button:UpdateButton("New Text")
 ```
+
+## Creating Toggles
 
 ```lua
 Section:NewToggle("ToggleText", "ToggleInfo", function(state)
@@ -77,6 +95,8 @@ Section:NewToggle("ToggleText", "ToggleInfo", function(state)
     end
 end)
 ```
+
+## Updating Toggles
 
 ```lua
 getgenv().Toggled = false
@@ -94,11 +114,15 @@ game:GetService("RunService").RenderStepped:Connect(function()
 end)
 ```
 
+## Creating Sliders
+
 ```lua
 Section:NewSlider("SliderText", "SliderInfo", 500, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
     game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
 end)
 ```
+
+## Creating Textboxes
 
 ```lua
 Section:NewTextBox("TextboxText", "TextboxInfo", function(txt)
@@ -106,11 +130,15 @@ Section:NewTextBox("TextboxText", "TextboxInfo", function(txt)
 end)
 ```
 
+## Creating Keybinds
+
 ```lua
 Section:NewKeybind("KeybindText", "KeybindInfo", Enum.KeyCode.F, function()
 	print("You just clicked the bind")
 end)
 ```
+
+## Toggling UI with Keybinds
 
 ```lua
 Section:NewKeybind("KeybindText", "KeybindInfo", Enum.KeyCode.F, function()
@@ -118,11 +146,15 @@ Section:NewKeybind("KeybindText", "KeybindInfo", Enum.KeyCode.F, function()
 end)
 ```
 
+## Creating Dropdowns
+
 ```lua
 Section:NewDropdown("DropdownText", "DropdownInf", {"Option 1", "Option 2", "Option 3"}, function(currentOption)
     print(currentOption)
 end)
 ```
+
+## Dropdown Refresh
 
 ```lua
 local oldList = {
@@ -141,12 +173,18 @@ Section:NewButton("Update Dropdown", "Refreshes Dropdown", function()
 end)
 ```
 
+## Creating Color Pickers
+
 ```lua
 Section:NewColorPicker("Color Text", "Color Info", Color3.fromRGB(0,0,0), function(color)
     print(color)
     -- Second argument is the default color
 end)
 ```
+
+## Applying Custom Themes / Colors
+
+Make new table, here you are going to put your colors, as shown below.
 
 ```lua
 local colors = {
@@ -158,9 +196,18 @@ local colors = {
 }
 ```
 
+Applying it: Change your window code little bit.
+
 ```lua
 local Window = Library.CreateLib("TITLE", colors)
 ```
+
+
+## Want to add fully customizable UI?
+
+Add this code in your section. This will create color pickers.
+
+Make sure you have added table with all the values of UI. then apply it to window. Like shown above.
 
 ```lua
 for theme, color in pairs(themes) do
