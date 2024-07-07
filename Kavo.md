@@ -68,7 +68,7 @@ local Label = Section:NewLabel("LabelText")
 ## Update Label
 
 ```lua
-label:UpdateLabel("New Text")
+Label:UpdateLabel("New Text")
 ```
 
 ## Creating Buttons
