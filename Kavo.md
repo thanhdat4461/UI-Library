@@ -10,8 +10,17 @@ local Library = loadstring(game:HttpGet(""))()
 local Window = Library.CreateLib("TITLE", "DarkTheme")
 ```
 
-```C
-Themes: LightTheme DarkTheme GrapeTheme BloodTheme Ocean Midnight Sentinel Synapse
+## Themes
+
+```ansi
+LightTheme
+DarkTheme
+GrapeTheme
+BloodTheme
+Ocean
+Midnight
+Sentinel
+Synapse
 ```
 
 ```lua
