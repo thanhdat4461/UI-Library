@@ -12,14 +12,28 @@ local Window = Library.CreateLib("TITLE", "DarkTheme")
 
 ## Themes
 
-```ansi
+```
 LightTheme
+```
+```
 DarkTheme
+```
+```
 GrapeTheme
+```
+```
 BloodTheme
+```
+```
 Ocean
+```
+```
 Midnight
+```
+```
 Sentinel
+```
+```
 Synapse
 ```
 
