@@ -13,7 +13,7 @@ local Window = Library.CreateLib("TITLE", "DarkTheme")
 
 ## Themes
 
-```js
+```java
 DarkTheme
 ```
 ```coffee
