@@ -3,7 +3,7 @@
 
 ## Getting Loadstring
 ```lua
-local Library = loadstring(game:HttpGet(""))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/thanhdat4461/GUI-Library/main/Kavo%20Library.lua"))()
 ```
 
 ## Creating UI Library Window
