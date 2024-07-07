@@ -62,7 +62,7 @@ Section:UpdateSection("Section New Title")
 ## Creating Labels
 
 ```lua
-Section:NewLabel("LabelText")
+local Label = Section:NewLabel("LabelText")
 ```
 
 ## Update Label
@@ -219,3 +219,5 @@ for theme, color in pairs(themes) do
     end)
 end
 ```
+
+![Screenshot_20240707-153859_Roblox](https://github.com/thanhdat4461/UI-Library/assets/125394392/9a2e6e2a-73b7-4006-b4cb-da646b633309)
