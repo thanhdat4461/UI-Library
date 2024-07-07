@@ -1,1 +1,1 @@
-# This is for mobile supported ui library
+THIS IS FOR MOBILE SUPPORTED GUI LIBRARY
